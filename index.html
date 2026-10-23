@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Sumon Akram | IT Specialist</title>
+<meta name="description" content="Md Shamsul Akram - IT management, information security and data protection professional based in Heilbronn, Germany.">
+<style>
+  :root {
+    --bg: #fafaf9;
+    --surface: #ffffff;
+    --text: #18162a;
+    --muted: #5f5b70;
+    --accent: #4b0fa8;
+    --accent-2: #7a3fe0;
+    --accent-soft: #f0ebfb;
+    --border: #e6e3ef;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #100e18;
+      --surface: #1b1828;
+      --text: #f2effb;
+      --muted: #aaa4c4;
+      --accent: #b79cff;
+      --accent-2: #8f6cf0;
+      --accent-soft: #272139;
+      --border: #2c2841;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #100e18;
+    --surface: #1b1828;
+    --text: #f2effb;
+    --muted: #aaa4c4;
+    --accent: #b79cff;
+    --accent-2: #8f6cf0;
+    --accent-soft: #272139;
+    --border: #2c2841;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; scroll-padding-top: 4.5rem; }
+  body {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.65;
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .container { max-width: 1040px; margin: 0 auto; padding: 0 1.25rem; }
+  section { padding: 5rem 0; }
+  h2 { font-size: clamp(1.6rem, 3.5vw, 2.1rem); margin-bottom: 0.5rem; letter-spacing: -0.01em; }
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+  }
+  .lead { color: var(--muted); max-width: 640px; margin-bottom: 2.5rem; }
+
+  /* Nav */
+  .nav {
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
+    z-index: 10;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav .container { display: flex; align-items: center; justify-content: space-between; height: 4rem; }
+  .brand { font-weight: 700; color: var(--text); }
+  .nav-links { display: flex; gap: 1.3rem; font-size: 0.93rem; }
+  .nav-links a { color: var(--muted); }
+  .nav-links a:hover { color: var(--accent); text-decoration: none; }
+
+  /* Hero */
+  .hero { padding: 5rem 0 4rem; }
+  .hero .container {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  .hero h1 {
+    font-size: clamp(2.4rem, 6vw, 3.8rem);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+  }
+  .hero h1 span {
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .hero .intro { font-size: 1.15rem; color: var(--muted); max-width: 560px; margin-bottom: 2rem; }
+  .buttons { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+  .btn {
+    display: inline-block;
+    padding: 0.8rem 1.4rem;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    transition: transform 0.15s, background 0.2s;
+  }
+  .btn.primary { background: var(--accent); color: #fff; }
+  .btn:hover { transform: translateY(-1px); text-decoration: none; }
+  .btn.primary:hover { background: var(--accent-2); border-color: var(--accent-2); }
+  .hero-photo {
+    width: 100%;
+    max-width: 360px;
+    aspect-ratio: 1 / 1;
+    border-radius: 24px;
+    object-fit: cover;
+    justify-self: center;
+    background: linear-gradient(135deg, var(--accent-soft), var(--surface));
+    border: 1px solid var(--border);
+    box-shadow: 0 20px 50px rgba(75, 15, 168, 0.15);
+  }
+
+  /* About */
+  .about { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .about .container { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+  .about p { color: var(--muted); margin-bottom: 1rem; }
+  .facts { display: grid; gap: 0.9rem; margin-top: 1.5rem; }
+  .fact {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1rem 1.2rem;
+  }
+  .fact strong { display: block; color: var(--text); }
+  .fact span { color: var(--muted); font-size: 0.93rem; }
+
+  /* Cards */
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1.25rem; }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.6rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .card:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(24,22,42,0.08); }
+  .icon {
+    width: 44px; height: 44px;
+    border-radius: 12px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    display: grid; place-items: center;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+  .card h3 { font-size: 1.08rem; margin-bottom: 0.4rem; }
+  .card p { color: var(--muted); font-size: 0.95rem; }
+
+  /* Projects */
+  .projects { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .project {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.6rem;
+    display: flex;
+    flex-direction: column;
+  }
+  .project .tag-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.9rem; }
+  .tag {
+    font-size: 0.78rem;
+    font-weight: 600;
+    background: var(--accent-soft);
+    color: var(--accent);
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+  }
+  .project h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+  .project p { color: var(--muted); font-size: 0.95rem; flex-grow: 1; }
+  .project .link { margin-top: 1rem; font-weight: 600; font-size: 0.92rem; }
+
+  /* Experience & education */
+  .timeline { display: grid; gap: 0; margin-top: 2rem; }
+  .job {
+    display: grid;
+    grid-template-columns: 170px 1fr;
+    gap: 1.5rem;
+    padding: 1.4rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .job:last-child { border-bottom: none; }
+  .job .when { color: var(--muted); font-size: 0.92rem; }
+  .job h3 { font-size: 1.05rem; }
+  .job .org { color: var(--accent); font-weight: 600; font-size: 0.93rem; margin-bottom: 0.3rem; }
+  .job .place { color: var(--muted); font-size: 0.88rem; margin-bottom: 0.4rem; }
+  .job p { color: var(--muted); font-size: 0.95rem; }
+  .subhead { margin-top: 3rem; font-size: 1.15rem; }
+
+  /* Skills */
+  .chips { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.5rem; }
+  .chip {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    font-size: 0.92rem;
+  }
+
+  /* Contact */
+  .contact { text-align: center; }
+  .contact .lead { margin-left: auto; margin-right: auto; }
+  .contact .buttons { justify-content: center; margin-top: 1.5rem; }
+
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem 0;
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.9rem;
+    padding-bottom: calc(2rem + env(safe-area-inset-bottom, 0px));
+  }
+
+  @media (max-width: 800px) {
+    .hero .container, .about .container { grid-template-columns: 1fr; }
+    .hero { padding-top: 3rem; }
+    .hero-photo { order: -1; max-width: 260px; }
+    .job { grid-template-columns: 1fr; gap: 0.3rem; }
+    .nav-links { display: none; }
+    section { padding: 3.5rem 0; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container">
+    <a class="brand" href="#top">Sumon Akram</a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="container">
+    <div>
+      <p class="eyebrow">IT Specialist &middot; Data Protection &middot; Editor</p>
+      <h1>Hi, I'm <span>Md Shamsul Akram, M.Eng.</span>.</h1>
+      <p class="intro">
+        I work across IT administration and management, servers, networks, cloud and security, and I automate the repetitive work
+        so teams can focus on what matters. Data protection and information security are at the core of my work. I have also worked in university laboratories, supporting teaching and research, and I'm passionate about news and clear editing.
+        Currently based in Heilbronn, Germany.
+      </p>
+      <div class="buttons">
+        <a class="btn primary" href="#projects">See my work</a>
+        <a class="btn" href="#contact">Get in touch</a>
+      </div>
+    </div>
+    <img class="hero-photo" src="photo.jpg" alt="Md Shamsul Akram" onerror="this.style.display='none'">
+  </div>
+</header>
+
+<section class="about" id="about">
+  <div class="container">
+    <div>
+      <p class="eyebrow">About me</p>
+      <h2>Practical IT, done carefully</h2>
+    </div>
+    <div>
+      <p>
+        I'm a Bangladeshi IT specialist. I hold a Master's in Information and Communications Engineering from the Berlin University of
+        Applied Sciences (BHT) and a Bachelor's in Computer Science &amp; Engineering from Prime University,
+        Dhaka. My work sits where infrastructure, security and automation meet.
+      </p>
+      <p>
+        I have worked in aerospace, automotive, university lab, research and consulting environments, from managing Active
+        Directory and virtual servers to coordinating GDPR and ISO 27001 requirements. I value clear
+        documentation, tested backups and systems people can rely on. Since 2020 I have also worked as an
+        editor for BDTone24.com, a Bangladeshi news portal. Outside work I volunteer with Rover Scouts, Youth for Better Future (YBF) and Amader Gaibandha, including
+        disaster and humanitarian relief.
+      </p>
+      <div class="facts">
+        <div class="fact"><strong>Based in</strong><span>Heilbronn, Germany</span></div>
+        <div class="fact"><strong>Languages</strong><span>Bengali (native), English (fluent), German (B1 certified, B2 in progress)</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="container">
+    <p class="eyebrow">What I do</p>
+    <h2>Services</h2>
+    <p class="lead">From day-to-day administration to long-term infrastructure planning.</p>
+    <div class="cards">
+      <div class="card">
+        <div class="icon">&#9881;</div>
+        <h3>IT Administration &amp; Management</h3>
+        <p>Windows Server, Linux, Active Directory, Group Policy and Microsoft 365 user lifecycle management.</p>
+      </div>
+      <div class="card">
+        <div class="icon">&#9729;</div>
+        <h3>Virtualization &amp; Storage</h3>
+        <p>Hyper-V, Proxmox, VMware ESXi and TrueNAS, with backup and disaster recovery planning.</p>
+      </div>
+      <div class="card">
+        <div class="icon">&#128640;</div>
+        <h3>Cloud &amp; Microsoft 365</h3>
+        <p>Microsoft 365, Entra ID, Azure and AWS, covering identity, user lifecycle and cloud service management.</p>
+      </div>
+      <div class="card">
+        <div class="icon">&#128272;</div>
+        <h3>Network &amp; Security</h3>
+        <p>TCP/IP, DNS, DHCP, VLANs, VPNs, firewalls and SIEM monitoring with Wazuh, Splunk and OpenVAS.</p>
+      </div>
+      <div class="card">
+        <div class="icon">&#9889;</div>
+        <h3>Automation</h3>
+        <p>PowerShell, Bash and Python scripts, plus Power Automate and Power Apps workflows, that cut manual work, reduce errors and keep documentation current.</p>
+      </div>
+      <div class="card">
+        <div class="icon">&#128203;</div>
+        <h3>Data Protection &amp; Information Security</h3>
+        <p>GDPR, NIS2 and ISO 27001 coordination, access policies and security monitoring.</p>
+      </div>
+      <div class="card">
+        <div class="icon">&#128222;</div>
+        <h3>IT Service Desk</h3>
+        <p>Ticketing, documentation and user support with Jira, Freshdesk and Confluence, following ITIL practices.</p>
+      </div>
+      <div class="card">
+        <div class="icon">&#127912;</div>
+        <h3>Web &amp; Graphic Design</h3>
+        <p>Website design with HTML, CSS and JavaScript, plus graphic design for print and digital use.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="projects" id="projects">
+  <div class="container">
+    <p class="eyebrow">Selected work</p>
+    <h2>Projects &amp; research</h2>
+    <p class="lead">A few projects from my studies, research and work.</p>
+    <div class="cards">
+      <article class="project">
+        <div class="tag-row"><span class="tag">Windows</span><span class="tag">Virtualization</span></div>
+        <h3>Windows Server Migration with Virtualization</h3>
+        <p>Master's thesis on the challenges, best practices and automation of migrating Windows Server environments.</p>
+        <span class="link">Master's thesis</span>
+      </article>
+      <article class="project">
+        <div class="tag-row"><span class="tag">Docker</span><span class="tag">Azure</span></div>
+        <h3>Containerized Web Applications on Azure</h3>
+        <p>Packaging a web application with Docker and deploying it through a container registry in Microsoft Azure.</p>
+        <span class="link">Research project</span>
+      </article>
+      <article class="project">
+        <div class="tag-row"><span class="tag">IoT</span><span class="tag">Arduino</span></div>
+        <h3>Real-time Air Quality Monitor</h3>
+        <p>An Arduino-based system that measures and reports air quality and pollution levels in real time.</p>
+        <span class="link">Embedded project</span>
+      </article>
+      <article class="project">
+        <div class="tag-row"><span class="tag">Machine Learning</span><span class="tag">Python</span></div>
+        <h3>Sentiment Analysis for E-commerce Reviews</h3>
+        <p>Classifying product review sentiment with machine learning algorithms to support better product decisions.</p>
+        <span class="link">Research project</span>
+      </article>
+      <article class="project">
+        <div class="tag-row"><span class="tag">Web</span><span class="tag">COVID-19 Data</span></div>
+        <h3>Mobile &amp; Web Interface for COVID-19 Data</h3>
+        <p>An interface that presents COVID-19 data for the most affected regions, built for mobile and web.</p>
+        <span class="link">Web project</span>
+      </article>
+      <article class="project">
+        <div class="tag-row"><span class="tag">Web</span><span class="tag">Database</span></div>
+        <h3>Online Blood Bank Management System</h3>
+        <p>A web system for managing donors, requests and inventory, developed for Prime University.</p>
+        <span class="link">Web project</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="container">
+    <p class="eyebrow">Career</p>
+    <h2>Experience</h2>
+    <div class="timeline">
+
+      <div class="job">
+        <div class="when">Feb 2026 – Present</div>
+        <div>
+          <h3>IT Administrator &amp; Data Protection Coordinator</h3>
+          <div class="org">HyImpulse, Aerospace &amp; Launch Vehicle Company</div>
+          <div class="place">Neuenstadt am Kocher, Germany &middot; Full-time</div>
+          <p>Windows, Linux and Microsoft 365 administration, virtualization and networking, automation, and coordination of data protection and information security.</p>
+        </div>
+      </div>
+
+      <div class="job">
+        <div class="when">Feb 2025 – Jan 2026</div>
+        <div>
+          <h3>IT Administrator</h3>
+          <div class="org">Uckert Technologies, IT Services</div>
+          <div class="place">Berlin, Germany &middot; Full-time</div>
+          <p>Server infrastructure, Active Directory, cloud and telephony systems, backup and disaster recovery, and security monitoring.</p>
+        </div>
+      </div>
+
+      <div class="job">
+        <div class="when">Jul 2024 – Dec 2024</div>
+        <div>
+          <h3>Hardware Engineer</h3>
+          <div class="org">autoaid GmbH, Automotive Tech</div>
+          <div class="place">Berlin, Germany &middot; Full-time</div>
+          <p>Testing, troubleshooting and maintaining tracking devices, wallboxes and tablet PCs, plus customer support.</p>
+        </div>
+      </div>
+
+      <div class="job">
+        <div class="when">Nov 2023 – Apr 2024</div>
+        <div>
+          <h3>Laboratory Engineer</h3>
+          <div class="org">University of the Bundeswehr Munich</div>
+          <div class="place">Munich, Germany</div>
+          <p>Supervising embedded systems labs, FPGA, SoC and VHDL digital design, and robotics research in C, Python and JS/Node-RED.</p>
+        </div>
+      </div>
+
+      <div class="job">
+        <div class="when">Jul 2023 – Jun 2024</div>
+        <div>
+          <h3>Student Assistant</h3>
+          <div class="org">Technical University of Darmstadt</div>
+          <div class="place">Darmstadt, Germany</div>
+          <p>Java and Python for semantic web applications, SPARQL for RDF data querying and modeling, and research on AI, Web 3.0, research data management and REST APIs.</p>
+        </div>
+      </div>
+
+      <div class="job">
+        <div class="when">Sep 2022 – Aug 2023</div>
+        <div>
+          <h3>Junior IT Consultant</h3>
+          <div class="org">Deloitte, Consulting / Big4</div>
+          <div class="place">Berlin, Germany &middot; Full-time</div>
+          <p>Data processing, analysis and dashboards with Power BI, Alteryx and QlikView, plus software testing and validation.</p>
+        </div>
+      </div>
+
+      <div class="job">
+        <div class="when">2020 – Present</div>
+        <div>
+          <h3>Editor</h3>
+          <div class="org">BDTone24.com, Bangladeshi News Portal</div>
+          <div class="place">Bangladesh</div>
+          <p>Editing and publishing news coverage for a digital news portal founded in 2020, from story selection to final copy.</p>
+        </div>
+      </div>
+
+      <div class="job">
+        <div class="when">Nov 2017 – Mar 2022</div>
+        <div>
+          <h3>Officer (Laboratory Assistant - IT)</h3>
+          <div class="org">University of Asia Pacific</div>
+          <div class="place">Dhaka, Bangladesh &middot; Full-time, on-site</div>
+          <p>Supervising laboratory classes and projects, IT support and administration for the Department of EEE.</p>
+        </div>
+      </div>
+
+      <div class="job">
+        <div class="when">Apr 2016 – Oct 2017</div>
+        <div>
+          <h3>Officer (Lab &amp; IT)</h3>
+          <div class="org">Uttara University</div>
+          <div class="place">Uttara, Dhaka &middot; Full-time, on-site</div>
+          <p>Lab supervision, PC, switch and router troubleshooting, mail client and backup management, CCTV, website maintenance and IT support.</p>
+        </div>
+      </div>
+
+      <div class="job">
+        <div class="when">Dec 2015 – Mar 2016</div>
+        <div>
+          <h3>IT Officer</h3>
+          <div class="org">Walton Group</div>
+          <div class="place">Gazipur, Dhaka &middot; Full-time</div>
+          <p>Hardware and network troubleshooting, mail configuration, CCTV, point-of-sale system management and customer relations.</p>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</section>
+
+<section id="education" style="padding-top:0;">
+  <div class="container">
+    <p class="eyebrow">Education</p>
+    <h2>Schools &amp; universities</h2>
+    <div class="timeline">
+
+      <div class="job">
+        <div class="when">2022 – 2025</div>
+        <div>
+          <h3>M.Eng. in Information and Communications Engineering</h3>
+          <div class="org">Berliner Hochschule für Technik (BHT)</div>
+          <div class="place">Berlin, Germany</div>
+        </div>
+      </div>
+
+      <div class="job">
+        <div class="when">2016 – 2019</div>
+        <div>
+          <h3>Bachelor's in Computer Science &amp; Engineering</h3>
+          <div class="org">Prime University</div>
+          <div class="place">Dhaka, Bangladesh</div>
+        </div>
+      </div>
+
+      <div class="job">
+        <div class="when">2011 – 2015</div>
+        <div>
+          <h3>Diploma in Engineering, Computer Technology</h3>
+          <div class="org">Rangpur Polytechnic Institute</div>
+          <div class="place">Rangpur, Bangladesh</div>
+        </div>
+      </div>
+
+      <div class="job">
+        <div class="when">2006 – 2011</div>
+        <div>
+          <h3>Secondary School Certificate (SSC), Humanities</h3>
+          <div class="org">Kamarjani Merchant's High School</div>
+          <div class="place">Gaibandha Sadar, Bangladesh</div>
+        </div>
+      </div>
+
+      <div class="job">
+        <div class="when">2001 – 2005</div>
+        <div>
+          <h3>Primary Education, Govt. Scholarship</h3>
+          <div class="org">Karaibari Govt Primary School</div>
+          <div class="place">Gaibandha Sadar, Bangladesh</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="projects" style="padding:4rem 0;">
+  <div class="container">
+    <p class="eyebrow">Toolkit</p>
+    <h2>Skills</h2>
+    <p class="lead">An IT specialist from Bangladesh, bringing together IT management, information security and data protection with a passion for news and clear editing.</p>
+    <div class="chips">
+      <span class="chip">Windows Server</span>
+      <span class="chip">Linux</span>
+      <span class="chip">Active Directory / GPO</span>
+      <span class="chip">Microsoft 365 / Entra ID</span>
+      <span class="chip">Hyper-V</span>
+      <span class="chip">Proxmox</span>
+      <span class="chip">VMware ESXi</span>
+      <span class="chip">TrueNAS</span>
+      <span class="chip">TCP/IP, DNS, DHCP, VLANs, VPN</span>
+      <span class="chip">Firewalls</span>
+      <span class="chip">PowerShell</span>
+      <span class="chip">Bash</span>
+      <span class="chip">Python</span>
+      <span class="chip">Docker</span>
+      <span class="chip">Azure / AWS</span>
+      <span class="chip">SIEM &amp; Vulnerability Scanning</span>
+      <span class="chip">GDPR / ISO 27001</span>
+      <span class="chip">Power BI</span>
+      <span class="chip">C / C++ / Java</span>
+      <span class="chip">Information Security</span>
+      <span class="chip">NIS2 Directive</span>
+      <span class="chip">ISO 27001</span>
+      <span class="chip">GDPR Compliance</span>
+      <span class="chip">IT Governance</span>
+      <span class="chip">Risk Management</span>
+      <span class="chip">Incident Response</span>
+      <span class="chip">Business Continuity &amp; DR</span>
+      <span class="chip">ITIL Service Management</span>
+      <span class="chip">Vendor Management</span>
+      <span class="chip">IT Budgeting &amp; Procurement</span>
+      <span class="chip">Team Leadership</span>
+      <span class="chip">Project Management</span>
+      <span class="chip">IT Strategy</span>
+      <span class="chip">Copy Editing</span>
+      <span class="chip">News Editing</span>
+      <span class="chip">Fact-checking</span>
+      <span class="chip">Story Planning</span>
+      <span class="chip">Proofreading</span>
+      <span class="chip">Content Management Systems</span>
+      <span class="chip">SEO Basics</span>
+      <span class="chip">Digital Publishing</span>
+      <span class="chip">Graphic Design</span>
+      <span class="chip">Web Design</span>
+      <span class="chip">HTML, CSS &amp; JavaScript</span>
+      <span class="chip">Wazuh &amp; OpenVAS</span>
+      <span class="chip">Splunk &amp; ELK Stack</span>
+      <span class="chip">Jira &amp; Freshdesk Ticketing</span>
+      <span class="chip">Confluence &amp; Notion</span>
+      <span class="chip">SAP Reporting</span>
+      <span class="chip">Sage ERP &amp; DocuWare DMS</span>
+      <span class="chip">NFON &amp; Starface VoIP</span>
+      <span class="chip">UniFi Networking</span>
+      <span class="chip">NAS / SAN Storage</span>
+      <span class="chip">CCTV &amp; Access Control</span>
+      <span class="chip">Veeam &amp; AOMEI Backup</span>
+      <span class="chip">Hardware Troubleshooting</span>
+      <span class="chip">Inventory Management</span>
+      <span class="chip">IT Service Desk Support</span>
+      <span class="chip">Embedded Systems, FPGA &amp; VHDL</span>
+      <span class="chip">PLC Automation</span>
+      <span class="chip">Arduino &amp; Node-RED</span>
+      <span class="chip">SQL Server &amp; MySQL</span>
+      <span class="chip">SPARQL &amp; RDF</span>
+      <span class="chip">REST APIs</span>
+      <span class="chip">Alteryx &amp; QlikView</span>
+      <span class="chip">MATLAB &amp; R</span>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="container">
+    <p class="eyebrow">Contact</p>
+    <h2>Let's work together</h2>
+    <p class="lead">
+      Have a question, an idea or just want to say hello? Send me a message and I'll get back to you.
+    </p>
+    <div class="buttons">
+      <a class="btn primary" href="mailto:mdshamsulakram@gmail.com">Email me</a>
+      <a class="btn" href="https://www.linkedin.com/in/msa-bd/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://github.com/SumonAkram" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>&copy; <span id="year"></span> Sumon Akram &middot; Germany</p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
